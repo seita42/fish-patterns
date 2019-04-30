@@ -1,0 +1,22 @@
+sample_name,sci_name,label,marker,color,markersize,xx,yy,h_align,alpha,linewidth
+AR0001,Arothron firmamentum,fir,o,#c44e52,150,8,5,left,0.8,0
+AR0004,Arothron mappa,map,x,#ffc400,200,8,-5,left,0.9,4
+AR0002,Arothron immaculatus,imm,o,#82c6e2,150,9,-5,left,0.8,0
+AR0007,Arothron nigropunctatus,nig,s,#4878d0,150,8,-2,left,0.8,0
+AR0006,Arothron diadematus,dia,o,#4878d0,150,6,10,left,0.8,0
+AR0008,Arothron meleagris,mel,o,#956cb4,150,8,-12,left,0.8,0
+AR0003,Arothron manilensis,man,o,#82c6e2,150,8,5,left,0.8,0
+AR0005,Arothron hispidus,his,o,#d5bb67,150,8,5,left,0.8,0
+AR0009,Arothron stellatus,ste,s,#55a868,250,-5,10,left,0.3,0
+AR0014,Arothron stellatus,ste,s,#55a868,250,8,3,left,0.3,0
+AR0015,Arothron stellatus,ste,s,#55a868,250,12,-6,left,0.3,0
+AR0016,Arothron stellatus,ste,s,#55a868,250,8,-15,left,0.3,0
+AR0017,Arothron stellatus,ste,s,#55a868,250,-8,-23,left,0.3,0
+AR0010,Arothron reticularis,ret,o,orange,250,-5,10,left,0.3,0
+AR0018,Arothron reticularis,ret,o,orange,250,8,1,left,0.3,0
+AR0019,Arothron reticularis,ret,o,orange,250,12,-4,left,0.3,0
+AR0020,Arothron reticularis,ret,o,orange,250,8,-13,left,0.3,0
+AR0021,Arothron reticularis,ret,o,orange,250,-3,-26,left,0.3,0
+AR0012,Arothron multilineatus,mul,x,chocolate,200,-8,-5,right,1,4
+AR0011,Arothron multilineatus,mul,x,chocolate,200,-8,0,right,1,4
+AR0013,Arothron carduus,car,x,seagreen,200,-8,0,right,1,4
