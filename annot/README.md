@@ -2,11 +2,11 @@
 pattern annotation dataset and related files
 
 * **fish-patterns-db-img.csv**  
-colour pattern annotation dataset for images referenced from public databases
+colour pattern annotation dataset for the images referenced from public databases
 * **fish-patterns-db-sp.csv**  
-presence/absence of each colour pattern category compiled for each species
+presence/absence of each colour pattern class compiled for each species
 * **fish-patterns-db-gen.csv**  
-presence/absence of each colour pattern category compiled for each genus
+presence/absence of each colour pattern class compiled for each genus
 * **fish-patterns-db-fam.csv**  
 presence/absence of each colour pattern category compiled for each family
 * **fam-tree.ipynb**  
