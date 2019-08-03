@@ -13,5 +13,5 @@ presence/absence of each colour pattern category compiled for each family
 code for annotated tree showing pattern diversity among fish families  
 * **12862_2017_958_MOESM2_ESM.nwk**  
 backbone tree cited from [Betancur-R et al. (2017) BMC Evol Biol 17:162](https://bmcevolbiol.biomedcentral.com/articles/10.1186/s12862-017-0958-3)
-* **co-occurrence.ipynb**  
-code for co-occurrence analysis
+* **phylo-colloc.ipynb**  
+code for phylogenetic collocation analysis
