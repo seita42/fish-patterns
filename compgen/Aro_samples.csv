@@ -1,11 +1,11 @@
 sample_name,sci_name,label,marker,color,markersize,xx,yy,h_align,alpha,linewidth
 AR0001,Arothron firmamentum,fir,o,#c44e52,150,8,5,left,0.8,0
 AR0004,Arothron mappa,map,x,#ffc400,200,8,-5,left,0.9,4
-AR0002,Arothron immaculatus,imm,o,#82c6e2,150,9,-5,left,0.8,0
+AR0002,Arothron immaculatus,imm,^,#82c6e2,150,9,-5,left,0.8,0
 AR0007,Arothron nigropunctatus,nig,s,#4878d0,150,8,-2,left,0.8,0
-AR0006,Arothron diadematus,dia,o,#4878d0,150,6,10,left,0.8,0
+AR0006,Arothron diadematus,dia,^,#4878d0,150,6,10,left,0.8,0
 AR0008,Arothron meleagris,mel,o,#956cb4,150,8,-12,left,0.8,0
-AR0003,Arothron manilensis,man,o,#82c6e2,150,8,5,left,0.8,0
+AR0003,Arothron manilensis,man,^,#82c6e2,150,8,5,left,0.8,0
 AR0005,Arothron hispidus,his,o,#d5bb67,150,8,5,left,0.8,0
 AR0009,Arothron stellatus,ste,s,#55a868,250,-5,10,left,0.3,0
 AR0014,Arothron stellatus,ste,s,#55a868,250,8,3,left,0.3,0
