@@ -1498,6 +1498,9 @@ def sph(vs, ucs, A, C, x, y, z, rotx=0, roty=0, rotz=0, mode="C"):
     elif mode == "AC":
         nA = (A-0.07)/(0.12-0.07)
         nC = (C+0.1)/(0.31+0.1)
+    else:
+        nA = (A-0.07)/(0.12-0.07)
+        nC = C/0.307
 
     if (type(nA) is np.float64):
         nA = np.full(len(vs), nA)
