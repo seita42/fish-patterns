@@ -9,3 +9,5 @@ code for visualizing the results
 code for preparing command files for BayesTraits (response to reviews)  
 * **R_pcm_plot_allFish.ipynb**  
 code for visualizing the results (response to reviews)  
+* **PCM_misc.R**  
+custom functions used in above code  
