@@ -7,3 +7,5 @@ pattern annotation
 simulation and quantification
 * **compgen**  
 comparative genomics analysis
+* **pcm**  
+phylogenetic comparative methods
