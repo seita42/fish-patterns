@@ -1,0 +1,136 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<nav class="nav">
+  <a class="nav-link" href="../fam_list?sort=0#{{ fams[0][0] }}">Family List</a>
+  <a class="nav-link" href="../fam_list?sort=0#{{ fams[0][0] }}">[A-Z]</a>
+  <a class="nav-link" href="../fam_list?sort=1#{{ fams[0][0] }}">[#asc]</a>
+  <a class="nav-link" href="../fam_list?sort=2#{{ fams[0][0] }}">[#desc]</a>
+  <a class="nav-link" href="../gen_list/{{ fams[0][0] }}?sort=0#{{ gen }}">Genera List</a>
+  <a class="nav-link" href="../gen_list/{{ fams[0][0] }}?sort=0#{{ gen }}">[A-Z]</a>
+  <a class="nav-link" href="../gen_list/{{ fams[0][0] }}?sort=1#{{ gen }}">[#asc]</a>
+  <a class="nav-link" href="../gen_list/{{ fams[0][0] }}?sort=2#{{ gen }}">[#desc]</a>
+  <!--<a class="btn btn-info btn-sm nav-link" href="../auto_sp/{{ gen }}">Auto SP</a>
+  {% if sp100_mode %}
+  <a class="btn btn-danger btn-sm nav-link" href="../sp100/stop"> SP100 [{{ current_sp }}] STOP</a>
+  {% else %}
+  <a class="btn btn-primary btn-sm nav-link" href="../sp100/start"> SP100 START</a>
+  {% endif %}
+  <a class="nav-link" href="../stats">Stats</a>-->
+  <a class="nav-link" href="../query">Search</a>
+</nav>
+
+<div class="container-fluid">
+  <h5>Family
+    {% for fam, jpn_fam in fams %}
+    <a href="../gen_list/{{ fam }}#{{ gen }}">{{ fam }} [{% if jpn_fam!=None %}{{ jpn_fam }}{% else %}―{% endif %}]</a>
+    {% endfor %}
+  </h5>
+  <h4>Genus <a href="../search?gen={{ gen }}">{{ gen }}</a></h4>
+</div>
+<div class="container">
+  {% for species, jpn_name, pic_num, pic_chk_num,
+     mono_num, area_fill_num,
+     stripe_vert_num, stripe_horz_num, stripe_diag_num, stripe_maze_num,
+     spot_dark_num, spot_light_num, eyespot_num, saddle_num,
+     blotch_num, no_use_num in sp_pic %}
+  <div class="row">
+    <div class="card card-body bg-light p-2">
+      <div class="row">
+        <a class="col-6" href="../pic_list/{{ species }}" id="{{ species }}">
+          {{ species }}
+          [{% if jpn_name != None %}{{ jpn_name }}{% else %}―{% endif %}]
+        </a>
+      <div class="col-3">
+        <span class="badge badge-info">
+          pic
+          <span class="badge badge-light">
+            {{ pic_chk_num }} / {{ pic_num }}
+          </span>
+        </span>
+        {% if pic_chk_num > 0 %}
+        <span class="badge badge-success">
+          checked
+        </span>
+        {% endif %}
+      </div>
+      <div class="col-3">
+        {% if mono_num > 0 %}
+        <span class="badge badge-secondary">
+          mono
+        </span>
+        {% endif %}
+        
+        {% if area_fill_num > 0 %}
+        <span class="badge badge-secondary">
+          area_fill
+        </span>
+        {% endif %}
+        
+        {% if stripe_vert_num > 0 %}
+        <span class="badge badge-primary">
+          stripe_vert
+        </span>
+        {% endif %}
+        
+        {% if stripe_horz_num > 0 %}
+        <span class="badge badge-primary">
+          stripe_horz
+        </span>
+        {% endif %}
+        
+        {% if stripe_diag_num > 0 %}
+        <span class="badge badge-primary">
+          stripe_diag
+        </span>
+        {% endif %}
+        
+        {% if stripe_maze_num > 0 %}
+        <span class="badge badge-success">
+          stripe_maze
+        </span>
+        {% endif %}
+        
+        {% if spot_dark_num > 0 %}
+        <span class="badge badge-light">
+          spot_dark
+        </span>
+        {% endif %}
+        
+        {% if spot_light_num > 0 %}
+        <span class="badge badge-dark">
+          spot_light
+        </span>
+        {% endif %}
+        
+        {% if eyespot_num > 0 %}
+        <span class="badge badge-danger">
+          eyespot
+        </span>
+        {% endif %}
+        
+        {% if saddle_num > 0 %}
+        <span class="badge badge-secondary">
+          saddle
+        </span>
+        {% endif %}
+        
+        {% if blotch_num > 0 %}
+        <span class="badge badge-secondary">
+          blotch
+        </span>
+        {% endif %}
+        
+        {% if no_use_num > 0 %}
+        <span class="badge badge-warning">
+          no_use
+        </span>
+        {% endif %}
+      </div>
+    </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+<hr>
+{% endblock %}

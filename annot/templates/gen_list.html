@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<nav class="nav">
+  <a class="nav-link" href="../fam_list?sort=0#{{ fam }}">Family List</a>
+  <a class="nav-link" href="../fam_list?sort=0#{{ fam }}">[A-Z]</a>
+  <a class="nav-link" href="../fam_list?sort=1#{{ fam }}">[#asc]</a>
+  <a class="nav-link" href="../fam_list?sort=2#{{ fam }}">[#desc]</a>
+  <a class="nav-link" href="../gen_list/{{ fam }}?sort=0">Genera List</a>
+  <a class="nav-link" href="../gen_list/{{ fam }}?sort=0">[A-Z]</a>
+  <a class="nav-link" href="../gen_list/{{ fam }}?sort=1">[#asc]</a>
+  <a class="nav-link" href="../gen_list/{{ fam }}?sort=2">[#desc]</a>
+  <!--<a class="btn btn-info btn-sm nav-link" href="../auto_fam?fam={{ fam }}">Auto Genus</a>
+  {% if sp100_mode %}
+  <a class="btn btn-danger btn-sm nav-link" href="../sp100/stop"> SP100 [{{ current_sp }}] STOP</a>
+  {% else %}
+  <a class="btn btn-primary btn-sm nav-link" href="../sp100/start"> SP100 START</a>
+  {% endif %}
+  <a class="nav-link" href="../stats">Stats</a>-->
+  <a class="nav-link" href="../query">Search</a>
+</nav>
+
+<div class="container-fluid">
+  <h4>Family <a href="../search?fam={{ fam }}"</a>{{ fam }} [{% if jpn_fam != None %}{{ jpn_fam }}{% else %}―{% endif %}]</a></h4>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    {% for genus, sp_num, sp_chk_num in gen_sp %}
+    <div class="col-xl-2 col-lg-3 col-md-6 col-sm-12 col-12">
+      <div class="card {% if sp_chk_num == sp_num %}bg-success{% elif sp_chk_num > 0 %}bg-warning{% endif %}" id="{{ genus }}">
+        <a class="card-body {% if sp_chk_num == sp_num %}text-white{% endif %}" href="../sp_list/{{ genus }}">
+          <h5 class="card-title">
+            {{ genus }}
+          </h5>
+          <span class="badge badge-success">
+            sp
+            <span class="badge badge-light">
+              {{ sp_chk_num }} / {{ sp_num }}
+            </span>
+          </span>
+          {% if sp_chk_num == sp_num %}
+          <span class="badge badge-danger">
+            complete
+          </span>
+          {% endif %}
+        </a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

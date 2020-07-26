@@ -1,0 +1,179 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<nav class="nav">
+  <a class="nav-link" href="../fam_list?sort=0#{{ fams[0][0] }}">Family List</a>
+  <a class="nav-link" href="../fam_list?sort=0#{{ fams[0][0] }}">[A-Z]</a>
+  <a class="nav-link" href="../fam_list?sort=1#{{ fams[0][0] }}">[#asc]</a>
+  <a class="nav-link" href="../fam_list?sort=2#{{ fams[0][0] }}">[#desc]</a>
+  <a class="nav-link" href="../gen_list/{{ fams[0][0] }}?sort=0#{{ annotation['genus'] }}">Genera List</a>
+  <a class="nav-link" href="../gen_list/{{ fams[0][0] }}?sort=0#{{ annotation['genus'] }}">[A-Z]</a>
+  <a class="nav-link" href="../gen_list/{{ fams[0][0] }}?sort=1#{{ annotation['genus'] }}">[#asc]</a>
+  <a class="nav-link" href="../gen_list/{{ fams[0][0] }}?sort=2#{{ annotation['genus'] }}">[#desc]</a>
+  <a class="nav-link" href="../sp_list/{{ annotation['genus'] }}">Species List</a>
+  <!--{% if sp100_mode %}
+  <a class="btn btn-danger btn-sm nav-link" href="../sp100/stop"> SP100 [{{ current_sp }}] STOP</a>
+  {% else %}
+  <a class="btn btn-primary btn-sm nav-link" href="../sp100/start"> SP100 START</a>
+  {% endif %}
+  <a class="nav-link" href="../stats">Stats</a>-->
+</nav>
+
+<div class="container-fluid">
+  <h5><a href="../pic_list/{{ annotation['species'] }}">{{ annotation['species'] }} [{{ annotation['jpn_name'] }}]</a>
+    <a class="badge badge-pill badge-info" href="https://www.google.com/images?q={{ annotation['species'] }}" target="_blank">Google</a>
+  </h5>
+</div>
+
+<div class="container-fluid">
+  <form method="post">
+
+    <div class="row">
+      <div class="col">
+        <div class="btn-group-toggle mb-3" data-toggle="buttons">
+          {% set ptn='mono' %}
+          <label class="btn btn-outline-secondary btn-block {% if annotation[ptn] %} active {% endif %}">
+            <input type="checkbox" name="{{ ptn }}" id="{{ ptn }}" autocomplete="off" {% if annotation[ptn] %} checked {% endif %}>
+            Monotone
+            <!--<br>ほぼ無地-->
+          </label>
+        </div>
+      </div>
+      <div class="col">
+        <div class="btn-group-toggle mb-3" data-toggle="buttons">
+          {% set ptn='spot_dark' %}
+          <label class="btn btn-outline-secondary btn-block {% if annotation[ptn] %} active {% endif %}">
+            <input type="checkbox" name="{{ ptn }}" id="{{ ptn }}" autocomplete="off" {% if annotation[ptn] %} checked {% endif %}>
+            Spot_dark
+            <!--<br>暗色斑-->
+          </label>
+        </div>
+      </div>
+      <div class="col">
+        <div class="btn-group-toggle mb-3" data-toggle="buttons">
+          {% set ptn='spot_light' %}
+          <label class="btn btn-outline-secondary btn-block {% if annotation[ptn] %} active {% endif %}">
+            <input type="checkbox" name="{{ ptn }}" id="{{ ptn }}" autocomplete="off" {% if annotation[ptn] %} checked {% endif %}>
+            Spot_light
+            <!--<br>淡色斑-->
+          </label>
+        </div>
+      </div>
+      <div class="col">
+        <div class="btn-group-toggle mb-3" data-toggle="buttons">
+          {% set ptn='eyespot' %}
+          <label class="btn btn-outline-secondary btn-block {% if annotation[ptn] %} active {% endif %}">
+            <input type="checkbox" name="{{ ptn }}" id="{{ ptn }}" autocomplete="off" {% if annotation[ptn] %} checked {% endif %}>
+            Eyespot
+            <!--<br>目玉、大斑点-->
+          </label>
+        </div>
+      </div>
+      <div class="col">
+        <div class="btn-group-toggle mb-3" data-toggle="buttons">
+          {% set ptn='blotch' %}
+          <label class="btn btn-outline-secondary btn-block {% if annotation[ptn] %} active {% endif %}">
+            <input type="checkbox" name="{{ ptn }}" id="{{ ptn }}" autocomplete="off" {% if annotation[ptn] %} checked {% endif %}>
+            Blotch
+            <!--<br>ぶち、まだら-->
+          </label>
+        </div>
+      </div>
+      <div class="col">
+        <div class="btn-group-toggle mb-3" data-toggle="buttons">
+          {% set ptn='no_use' %}
+          <label class="btn btn-outline-secondary btn-block {% if annotation[ptn] %} active {% endif %}">
+            <input type="checkbox" name="{{ ptn }}" id="{{ ptn }}" autocomplete="off" {% if annotation[ptn] %} checked {% endif %}>
+            No-use
+            <!--<br>不使用-->
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="btn-group-toggle mb-3" data-toggle="buttons">
+          {% set ptn='area_fill' %}
+          <label class="btn btn-outline-secondary btn-block {% if annotation[ptn] %} active {% endif %}">
+            <input type="checkbox" name="{{ ptn }}" id="{{ ptn }}" autocomplete="off" {% if annotation[ptn] %} checked {% endif %}>
+            Area_fill
+            <!--<br>領域ベタ塗-->
+          </label>
+        </div>
+      </div>
+      <div class="col">
+        <div class="btn-group-toggle mb-3" data-toggle="buttons">
+          {% set ptn='stripe_vert' %}
+          <label class="btn btn-outline-secondary btn-block {% if annotation[ptn] %} active {% endif %}">
+            <input type="checkbox" name="{{ ptn }}" id="{{ ptn }}" autocomplete="off" {% if annotation[ptn] %} checked {% endif %}>
+            Stripe_vert
+            <!--<br>よこ縞-->
+          </label>
+        </div>
+      </div>
+      <div class="col">
+        <div class="btn-group-toggle mb-3" data-toggle="buttons">
+          {% set ptn='stripe_horz' %}
+          <label class="btn btn-outline-secondary btn-block {% if annotation[ptn] %} active {% endif %}">
+            <input type="checkbox" name="{{ ptn }}" id="{{ ptn }}" autocomplete="off" {% if annotation[ptn] %} checked {% endif %}>
+            Stripe_horz
+            <!--<br>たて縞-->
+          </label>
+        </div>
+      </div>
+      <div class="col">
+        <div class="btn-group-toggle mb-3" data-toggle="buttons">
+          {% set ptn='stripe_diag' %}
+          <label class="btn btn-outline-secondary btn-block {% if annotation[ptn] %} active {% endif %}">
+            <input type="checkbox" name="{{ ptn }}" id="{{ ptn }}" autocomplete="off" {% if annotation[ptn] %} checked {% endif %}>
+            Stripe_diag
+            <!--<br>ななめ縞-->
+          </label>
+        </div>
+      </div>
+      <div class="col">
+        <div class="btn-group-toggle mb-3" data-toggle="buttons">
+          {% set ptn='stripe_maze' %}
+          <label class="btn btn-outline-secondary btn-block {% if annotation[ptn] %} active {% endif %}">
+            <input type="checkbox" name="{{ ptn }}" id="{{ ptn }}" autocomplete="off" {% if annotation[ptn] %} checked {% endif %}>
+            Stripe_maze
+            <!--<br>迷宮模様-->
+          </label>
+        </div>
+      </div>
+      <div class="col">
+        <div class="btn-group-toggle mb-3" data-toggle="buttons">
+          {% set ptn='saddle' %}
+          <label class="btn btn-outline-secondary btn-block {% if annotation[ptn] %} active {% endif %}">
+            <input type="checkbox" name="{{ ptn }}" id="{{ ptn }}" autocomplete="off" {% if annotation[ptn] %} checked {% endif %}>
+            Saddle
+            <!--<br>鞍状斑-->
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="row align-items-center">
+      <div class="col">
+          {{ img_file }}
+      </div>
+      <div class="col">
+        {% if annotation['db'] == "fishbase" %}
+        {% set species = annotation['species'].split(' ') %}
+        <a target="_blank" rel="noopener noreferrer"
+          href="https://www.fishbase.de/photos/thumbnailssummary.php?Genus={{ species[0] }}&Species={{ species[1] }}">image source: FishBase</a>
+        {% elif annotation['db'] == "fishpix" %}
+        {% set photo_id = img_file[0:-6] %}
+        <a target="_blank" rel="noopener noreferrer"
+          href="http://fishpix.kahaku.go.jp/fishimage-e/detail?PHOTO_ID={{ photo_id }}">image source: FishPix</a>
+        {% endif %}
+        <!-- <img src="../static/{{ annotation['img_file_path'] }}"> -->
+      </div>
+      <div class="col">
+        <button type="submit" class="btn btn-primary btn-block"> <br> Save <br> <br></button>
+      </div>
+    </div>
+  </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<nav class="nav">
+  <a class="nav-link active" href="../fam_list?sort=0">Family List</a>
+  <a class="nav-link" href="../fam_list?sort=0">[A-Z]</a>
+  <a class="nav-link" href="../fam_list?sort=1">[#asc]</a>
+  <a class="nav-link" href="../fam_list?sort=2">[#desc]</a>
+  <!--<a class="btn btn-info btn-sm nav-link" href="../auto_fam">Random Genus</a>
+  {% if sp100_mode %}
+  <a class="btn btn-danger btn-sm nav-link" href="../sp100/stop"> SP100 [{{ current_sp }}] STOP</a>
+  {% else %}
+  <a class="btn btn-primary btn-sm nav-link" href="../sp100/start"> SP100 START</a>
+  {% endif %}
+  <a class="nav-link" href="../stats">Stats</a>-->
+  <a class="nav-link" href="../query">Search</a>
+</nav>
+
+<div class="container-fluid">
+  <h4>Family List
+    <span class="badge badge-primary">
+      Genera
+      <span class="badge badge-light">
+        {{ sum_gen_comp_num }} / {{ sum_gen_num }}
+      </span>
+    </span>
+    <span class="badge badge-success">
+      Species
+      <span class="badge badge-light">
+        {{ sum_sp_chk_num }} / {{ sum_sp_num }}
+      </span>
+    </span>
+</h4>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    {% for family, jpn_fam, gen_comp_num, gen_num, sp_chk_num, sp_num in fam_gen %}
+    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6">
+      <div class="card {% if sp_chk_num == sp_num %}bg-success{% elif gen_comp_num > 0 %}bg-warning{% endif %}" id="{{ family }}">
+        <a class="card-body {% if sp_chk_num == sp_num %} text-white {% endif %}" href="gen_list/{{ family }}">
+          <h5 class="card-title">
+            {{ family }}
+          </h5>
+          <p class="card-text">
+            {% if jpn_fam!=None %} {{ jpn_fam }} {% else %} ― {% endif %}
+          </p>
+          <span class="badge badge-primary">
+            gen
+            <span class="badge badge-light">
+              {{ gen_comp_num }} / {{ gen_num }}
+            </span>
+          </span>
+        
+          <span class="badge badge-success">
+            sp
+            <span class="badge badge-light">
+              {{ sp_chk_num }} / {{ sp_num }}
+            </span>
+          </span>
+          {% if sp_chk_num == sp_num %}
+          <span class="badge badge-danger">
+            OK!
+          </span>
+          {% endif %}
+        </a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+<hr>
+{% endblock %}

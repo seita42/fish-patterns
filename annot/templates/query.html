@@ -1,0 +1,425 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<nav class="nav">
+  <a class="nav-link" href="../fam_list?sort=0">Family List</a>
+  <a class="nav-link" href="../fam_list?sort=0">[A-Z]</a>
+  <a class="nav-link" href="../fam_list?sort=1">[#asc]</a>
+  <a class="nav-link" href="../fam_list?sort=2">[#desc]</a>
+  <a class="nav-link" href="../query">Search</a>
+</nav>
+
+<div class="container">
+  <h4>Pattern Search</h4>
+</div>
+<hr>
+<div class="container">
+  <form action="../search" method="get">
+    <div class="row">
+
+      <div class="col">
+        {% set ptn='stripe_any' %}
+        <div class="card mb-3">
+          <h6 class="card-header bg-warning">
+            Stripe_any
+            <!--<br>縞（ぜんぶ）-->
+          </h6>
+          <div class="card-body">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="{{ ptn }}1" name="{{ ptn }}" value=1>
+              <label class="form-check_label" for="{{ ptn }}1">with</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="{{ ptn }}0" name="{{ ptn }}" value=0>
+              <label class="form-check_label" for="{{ ptn }}0">without</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="{{ ptn }}2" name="{{ ptn }}" value=2 checked>
+              <label class="form-check_label" for="{{ ptn }}2">not specified</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        {% set ptn='stripe_dir' %}
+        <div class="card mb-3">
+          <h6 class="card-header bg-warning">
+            Stripe_noMaze
+            <!--<br>縦横斜め縞-->
+          </h6>
+          <div class="card-body">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="{{ ptn }}1" name="{{ ptn }}" value=1>
+              <label class="form-check_label" for="{{ ptn }}1">with</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="{{ ptn }}0" name="{{ ptn }}" value=0>
+              <label class="form-check_label" for="{{ ptn }}0">without</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="{{ ptn }}2" name="{{ ptn }}" value=2 checked>
+              <label class="form-check_label" for="{{ ptn }}2">not specified</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col">
+        {% set ptn='stripe_vert' %}
+        <div class="card mb-3">
+          <h6 class="card-header">
+            Stripe_vert
+            <!--<br>よこ縞-->
+          </h6>
+          <div class="card-body">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="{{ ptn }}1" name="{{ ptn }}" value=1>
+              <label class="form-check_label" for="{{ ptn }}1">with</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="{{ ptn }}0" name="{{ ptn }}" value=0>
+              <label class="form-check_label" for="{{ ptn }}0">without</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="{{ ptn }}2" name="{{ ptn }}" value=2 checked>
+              <label class="form-check_label" for="{{ ptn }}2">not specified</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col">
+        {% set ptn='stripe_horz' %}
+        <div class="card mb-3">
+          <h6 class="card-header">
+            Stripe_horz
+            <!--<br>たて縞-->
+          </h6>
+          <div class="card-body">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="{{ ptn }}1" name="{{ ptn }}" value=1>
+              <label class="form-check_label" for="{{ ptn }}1">with</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="{{ ptn }}0" name="{{ ptn }}" value=0>
+              <label class="form-check_label" for="{{ ptn }}0">without</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="{{ ptn }}2" name="{{ ptn }}" value=2 checked>
+              <label class="form-check_label" for="{{ ptn }}2">not specified</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        {% set ptn='stripe_diag' %}
+        <div class="card mb-3">
+          <h6 class="card-header">
+            Stripe_diag
+            <!--<br>ななめ縞-->
+          </h6>
+          <div class="card-body">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="{{ ptn }}1" name="{{ ptn }}" value=1>
+              <label class="form-check_label" for="{{ ptn }}1">with</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="{{ ptn }}0" name="{{ ptn }}" value=0>
+              <label class="form-check_label" for="{{ ptn }}0">without</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="{{ ptn }}2" name="{{ ptn }}" value=2 checked>
+              <label class="form-check_label" for="{{ ptn }}2">not specified</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        {% set ptn='stripe_maze' %}
+        <div class="card mb-3">
+          <h6 class="card-header">
+            Stripe_maze
+            <!--<br>虫食い・迷宮-->
+          </h6>
+          <div class="card-body">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="{{ ptn }}1" name="{{ ptn }}" value=1>
+              <label class="form-check_label" for="{{ ptn }}1">with</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="{{ ptn }}0" name="{{ ptn }}" value=0>
+              <label class="form-check_label" for="{{ ptn }}0">without</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="{{ ptn }}2" name="{{ ptn }}" value=2 checked>
+              <label class="form-check_label" for="{{ ptn }}2">not specified</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        {% set ptn='spot_any' %}
+        <div class="card mb-3">
+          <h6 class="card-header bg-warning">
+            Spot_any
+            <!--<br>斑点（ぜんぶ）-->
+          </h6>
+          <div class="card-body">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="{{ ptn }}1" name="{{ ptn }}" value=1>
+              <label class="form-check_label" for="{{ ptn }}1">with</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="{{ ptn }}0" name="{{ ptn }}" value=0>
+              <label class="form-check_label" for="{{ ptn }}0">without</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="{{ ptn }}2" name="{{ ptn }}" value=2 checked>
+              <label class="form-check_label" for="{{ ptn }}2">not specified</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col">
+        {% set ptn='spot_noeye' %}
+        <div class="card mb-3">
+          <h6 class="card-header bg-warning">
+            Spot_noEye
+            <!--<br>暗色斑・淡色斑-->
+          </h6>
+          <div class="card-body">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="{{ ptn }}1" name="{{ ptn }}" value=1>
+              <label class="form-check_label" for="{{ ptn }}1">with</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="{{ ptn }}0" name="{{ ptn }}" value=0>
+              <label class="form-check_label" for="{{ ptn }}0">without</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="{{ ptn }}2" name="{{ ptn }}" value=2 checked>
+              <label class="form-check_label" for="{{ ptn }}2">not specified</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col">
+        {% set ptn='spot_dark' %}
+        <div class="card mb-3">
+          <h6 class="card-header">
+            Spot_dark
+            <!--<br>暗色斑-->
+          </h6>
+          <div class="card-body">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="{{ ptn }}1" name="{{ ptn }}" value=1>
+              <label class="form-check_label" for="{{ ptn }}1">with</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="{{ ptn }}0" name="{{ ptn }}" value=0>
+              <label class="form-check_label" for="{{ ptn }}0">without</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="{{ ptn }}2" name="{{ ptn }}" value=2 checked>
+              <label class="form-check_label" for="{{ ptn }}2">not specified</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col">
+        {% set ptn='spot_light' %}
+        <div class="card mb-3">
+          <h6 class="card-header">
+            Spot_light
+            <!--<br>淡色斑-->
+          </h6>
+          <div class="card-body">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="{{ ptn }}1" name="{{ ptn }}" value=1>
+              <label class="form-check_label" for="{{ ptn }}1">with</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="{{ ptn }}0" name="{{ ptn }}" value=0>
+              <label class="form-check_label" for="{{ ptn }}0">without</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="{{ ptn }}2" name="{{ ptn }}" value=2 checked>
+              <label class="form-check_label" for="{{ ptn }}2">not specified</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        {% set ptn='eyespot' %}
+        <div class="card mb-3">
+          <h6 class="card-header">
+            Eyespot
+            <!--<br>目玉、大斑点-->
+          </h6>
+          <div class="card-body">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="{{ ptn }}1" name="{{ ptn }}" value=1>
+              <label class="form-check_label" for="{{ ptn }}1">with</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="{{ ptn }}0" name="{{ ptn }}" value=0>
+              <label class="form-check_label" for="{{ ptn }}0">without</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="{{ ptn }}2" name="{{ ptn }}" value=2 checked>
+              <label class="form-check_label" for="{{ ptn }}2">not specified</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        {% set ptn='saddle' %}
+        <div class="card mb-3">
+          <h6 class="card-header">
+            Saddle
+            <!--<br>鞍状斑-->
+          </h6>
+          <div class="card-body">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="{{ ptn }}1" name="{{ ptn }}" value=1>
+              <label class="form-check_label" for="{{ ptn }}1">with</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="{{ ptn }}0" name="{{ ptn }}" value=0>
+              <label class="form-check_label" for="{{ ptn }}0">without</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="{{ ptn }}2" name="{{ ptn }}" value=2 checked>
+              <label class="form-check_label" for="{{ ptn }}2">not specified</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col">
+      </div>
+
+      <div class="col">
+      </div>
+      
+      <div class="col">
+        {% set ptn='mono' %}
+        <div class="card mb-3">
+          <h6 class="card-header">
+            Mono
+            <!--<br>ほぼ無地-->
+          </h6>
+          <div class="card-body">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="{{ ptn }}1" name="{{ ptn }}" value=1>
+              <label class="form-check_label" for="{{ ptn }}1">with</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="{{ ptn }}0" name="{{ ptn }}" value=0>
+              <label class="form-check_label" for="{{ ptn }}0">without</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="{{ ptn }}2" name="{{ ptn }}" value=2 checked>
+              <label class="form-check_label" for="{{ ptn }}2">not specified</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col">
+        {% set ptn='area_fill' %}
+        <div class="card mb-3">
+          <h6 class="card-header">
+            Area_fill
+            <!--<br>領域ベタ塗-->
+          </h6>
+          <div class="card-body">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="{{ ptn }}1" name="{{ ptn }}" value=1>
+              <label class="form-check_label" for="{{ ptn }}1">with</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="{{ ptn }}0" name="{{ ptn }}" value=0>
+              <label class="form-check_label" for="{{ ptn }}0">without</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="{{ ptn }}2" name="{{ ptn }}" value=2 checked>
+              <label class="form-check_label" for="{{ ptn }}2">not specified</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col">
+        {% set ptn='blotch' %}
+        <div class="card mb-3">
+          <h6 class="card-header">
+            Blotch
+            <!--<br>ぶち、まだら-->
+          </h6>
+          <div class="card-body">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="{{ ptn }}1" name="{{ ptn }}" value=1>
+              <label class="form-check_label" for="{{ ptn }}1">with</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="{{ ptn }}0" name="{{ ptn }}" value=0>
+              <label class="form-check_label" for="{{ ptn }}0">without</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="{{ ptn }}2" name="{{ ptn }}" value=2 checked>
+              <label class="form-check_label" for="{{ ptn }}2">not specified</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        {% set ptn='no_use' %}
+        <div class="card mb-3">
+          <h6 class="card-header bg-secondary text-white">
+            No-use
+            <!--<br>不使用-->
+          </h6>
+          <div class="card-body">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="{{ ptn }}1" name="{{ ptn }}" value=1>
+              <label class="form-check_label" for="{{ ptn }}1">with</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="{{ ptn }}0" name="{{ ptn }}" value=0>
+              <label class="form-check_label" for="{{ ptn }}0">without</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="{{ ptn }}2" name="{{ ptn }}" value=2 checked>
+              <label class="form-check_label" for="{{ ptn }}2">not specified</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <button type="submit" class="btn btn-primary btn-block">Search</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+{% endblock %}

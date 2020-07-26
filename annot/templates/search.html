@@ -1,0 +1,112 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<nav class="nav">
+  <a class="nav-link" href="../fam_list?sort=0">Family List</a>
+  <a class="nav-link" href="../fam_list?sort=0">[A-Z]</a>
+  <a class="nav-link" href="../fam_list?sort=1">[#asc]</a>
+  <a class="nav-link" href="../fam_list?sort=2">[#desc]</a>
+</nav>
+
+<div class="container-fluid">
+  <h5>Search Result: {{ hit_num }}</h5>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    {% for family, jpn_fam, genus, species, jpn_name, img_file, img_file_path, 
+           mono, area_fill, 
+           stripe_vert, stripe_horz, stripe_diag, stripe_maze, 
+           spot_dark, spot_light, eyespot, saddle, blotch, no_use 
+           in search_result %}
+    <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-8">
+      <div class="card" id="{{ img_file }}">
+        <a class="card-header" href="../pic_list/{{ species }}">
+          {{ species }}
+        </a>
+        <div class="card-body">
+          <a class="card-title" href="../annotate_pic/{{ img_file }}?next_url={{ next_url }}#{{ img_file }}">
+            {{ img_file }}
+          </a>
+          <!--<img class="card-img" src="../static/{{ img_file_path }}">-->
+
+          {% if mono == 1 %}
+          <span class="badge badge-secondary">
+            mono
+          </span>
+          {% endif %}
+          
+          {% if area_fill == 1 %}
+          <span class="badge badge-secondary">
+            area_fill
+          </span>
+          {% endif %}
+          
+          {% if stripe_vert == 1 %}
+          <span class="badge badge-primary">
+            stripe_vert
+          </span>
+          {% endif %}
+          
+          {% if stripe_horz == 1 %}
+          <span class="badge badge-primary">
+            stripe_horz
+          </span>
+          {% endif %}
+          
+          {% if stripe_diag == 1 %}
+          <span class="badge badge-primary">
+            stripe_diag
+          </span>
+          {% endif %}
+          
+          {% if stripe_maze == 1 %}
+          <span class="badge badge-success">
+            stripe_maze
+          </span>
+          {% endif %}
+          
+          {% if spot_dark == 1 %}
+          <span class="badge badge-light">
+            spot_dark
+          </span>
+          {% endif %}
+          
+          {% if spot_light == 1 %}
+          <span class="badge badge-dark">
+            spot_light
+          </span>
+          {% endif %}
+
+          {% if eyespot == 1 %}
+          <span class="badge badge-danger">
+            eyespot
+          </span>
+          {% endif %}
+
+          {% if saddle == 1 %}
+          <span class="badge badge-secondary">
+            saddle
+          </span>
+          {% endif %}
+          
+          {% if blotch == 1 %}
+          <span class="badge badge-secondary">
+            blotch
+          </span>
+          {% endif %}
+          
+          {% if no_use == 1 %}
+          <span class="badge badge-warning">
+            no_use
+          </span>
+          {% endif %}
+
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
+
