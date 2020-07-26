@@ -15,3 +15,5 @@ code for annotated tree showing pattern diversity among fish families
 backbone tree cited from [Betancur-R et al. (2017) BMC Evol Biol 17:162](https://bmcevolbiol.biomedcentral.com/articles/10.1186/s12862-017-0958-3)
 * **phylo-colloc.ipynb**  
 code for phylogenetic collocation analysis
+* **fishDB_pub.py, templates**  
+code for annotation system using Flask framework
