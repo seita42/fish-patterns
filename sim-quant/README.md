@@ -7,13 +7,15 @@ RD simulation on spheres using uniform parameter values
 * **rdmb_ish.ipynb**  
 RD simulation on metaballs (in silico hybridization)
 * **rdmb_set.ipynb**  
-RD simulation on spheres/metaballs that reproduces Fig. 2a
+RD simulation on spheres/metaballs that reproduces Fig. 3A
 * **make_mb.ipynb**  
 prepare sets of evenly distributed cells on spheres/metaballs (metaball_obj)
 * **mbobj**  
 directory containing metaball_obj files
 * **quant_all.ipynb**  
 pattern quantification analysis
+* **R_quant_reps.ipynb**  
+comparison of pattern quantification methods
 * **Aro_uni_ish.csv**  
 raw results of pattern quantification analysis with the links/credits for the original images
 * **rdmb.py, quant.py**  
